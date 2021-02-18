@@ -1,2 +1,3 @@
-# php-intro
-php intro exercises
+# Php intro
+
+Week 1 intro exercises
