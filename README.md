@@ -17,3 +17,11 @@ Week 1 intro exercises
 6. Show a $4x4$ table that shows the first 4 powers of the first 4 numbers (develop a function using the `pow` function). In PHP you have to define the functions before invoking it. The parameters are indicated by name or preceded by `&` if you are passing the parameters by reference.
 
 7. Store the first 10 natural even numbers in a vector. Print it each one in a new line (remember the HTML tag <br>)
+
+8. Print the values of the next associative vector using the foreach control statement: 
+```
+$v[1] = 90;
+$v[30] = 7;
+$v['e'] = 99;
+$v['hola'] = 43;
+````
