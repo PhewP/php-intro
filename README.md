@@ -25,3 +25,5 @@ $v[30] = 7;
 $v['e'] = 99;
 $v['hola'] = 43;
 ````
+
+9. Develop a program that shows in a 4 column table every images into the images folder.
