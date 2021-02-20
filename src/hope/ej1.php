@@ -1,6 +1,6 @@
 <hmtl>
     <head>
-        <title> Exercise 1 </title>
+        <title> Excercise 1 </title>
     </head>
 
     <body>
