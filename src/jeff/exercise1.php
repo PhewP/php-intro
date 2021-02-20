@@ -1,7 +1,9 @@
 <html>
     <head>
-        <meta http-equiv="content-type" content="text/html"; charset="utf-8"/>
-        <title>exercise 1</title>
+        <meta http-equiv="content-type" 
+            content="text/html";
+            charset="utf-8"/>
+        <title>Exercise 1</title>
     </head>
     <body>
 
