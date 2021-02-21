@@ -29,3 +29,5 @@ $v['hola'] = 43;
 9. Develop a program that shows in a 4 column table every images into the images folder.
 
 10. Do the same than the exercise $9$ but rescale the images to $100x100$ and when you click on it open a full view of it. Check that only show the images with extensions `.jpg`, `.png`, `bmp` or `.gif` (develop a function to check the extensions using regular expressions.) 
+
+11. Develop a euroconversor from euros to pounds.
