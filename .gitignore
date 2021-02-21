@@ -25,3 +25,7 @@ Homestead.json
 # Mysql
 
 src/mysql
+
+# images
+
+src/jeff/images
