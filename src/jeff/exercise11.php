@@ -4,7 +4,7 @@
     <body>
         <?php 
             echo "are : ";
-            echo $_POST['euros'] * 0.386;
+            echo $_POST['euros'] * 0.86;
             echo " pounds";
         ?> 
     </body>
