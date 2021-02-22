@@ -33,3 +33,5 @@ $v['hola'] = 43;
 11. Develop a euroconversor from euros to pounds.
 
 12. Develop a conversor from euros to dollars or pounds. The user must choice one and only one.
+
+13. Expand the exercise 10 allowing the user to upload their own images.
