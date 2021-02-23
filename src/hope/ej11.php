@@ -7,7 +7,7 @@
         <?php
             echo "Result: ";
             echo $_POST["euros"] * 0.8615;
-            echo " libras";
+            echo " pounds";
         ?>
     </body>
 </html>
