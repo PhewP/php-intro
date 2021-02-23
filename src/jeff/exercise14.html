@@ -1,0 +1,40 @@
+<html> 
+    <head>
+        <meta http-equiv="Content-type" content="text/html" charset="utf-8">
+        <title>Exercise 14</title>
+    </head>
+    <body>
+        <form action="exercise14.php" method="POST">
+            <p>Name: <input type="text" name="userName"></p>
+            <p>Surname: <input type="text" name="surName"></p>
+            <p>Date of birth: <input type="number" name="birth" value="1900" min="1900"></p>
+            <p>Gender:
+            <input type="radio" name="gender" value="male"/> Male 
+            <input type="radio" name="gender" value="female" checked="checked"/> Female
+            </p>
+            <p>Native city: <input type="text" name="nativeCity"></p>
+            <p>Current city: <input type="text" name="currentCity"></p>
+            <p>Degree: <select name="degree">
+                <option>Computer Science</option>
+                <option>Electronic Engineering</option>
+                <option>Industrial Engineering</option>
+            </select></p>
+            <p>grade: <select name="grade">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+            </select></p>
+            <p>
+                Tell us something about you:
+            </p>
+                <textarea name="biography">
+                    Write here...
+                </textarea>
+            <p>
+                <input type="submit" value="send">
+                <input type="reset" value="reset">
+            </p>
+        </form>
+    </body>
+</html>
