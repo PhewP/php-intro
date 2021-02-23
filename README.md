@@ -35,3 +35,6 @@ $v['hola'] = 43;
 12. Develop a conversor from euros to dollars or pounds. The user must choice one and only one.
 
 13. Expand the exercise 10 allowing the user to upload their own images.
+
+14. Develop a form about user personal information using all form options. With that informations develop
+a php script that process that information genarating a text with it.
