@@ -2,7 +2,7 @@
 
 Week 1 intro exercises
 
-# Exercises
+## Relation 1 - Week 1 - Exercises
 
 1. Concatenate two text strings with the operator (.) and print the result.
 
@@ -38,3 +38,7 @@ $v['hola'] = 43;
 
 14. Develop a form about user personal information using all form options. With that informations develop
 a php script that process that information genarating a text with it.
+
+## Relation 2 - Week 2 - Exercises
+
+1. Access to a msql table, send a query and fetch the result, showing them on screen in table format.
