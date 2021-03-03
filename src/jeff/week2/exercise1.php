@@ -1,7 +1,8 @@
 <html>
     <head>
-        <meta http-equiv="Content-type" content="text/hmlt" charset="utf-8">
+        <meta http-equiv="Content-type" content="text/html" charset="utf-8">
         <title> Exercise 1</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
     </head>
 
     <body>
