@@ -13,22 +13,22 @@
                 $connection = mysqli_connect("localhost", "cursophp", "", "lindavista") 
                 or die ("Cannot connect to server");
 
-                $instruction = "select votos1, vosot2, from votos";
+                $instruction = "select votos1, votos2 from votos";
                 $query = mysqli_query($connection, $instruction)
                 or die ("Query failure");
                 $result = mysqli_fetch_array($query);
 
                 $vote1 = $result["votos1"];
                 $vote2 = $result["votos2"];
-                $vote = $_POST['voto'];
+                $vote = $_POST['vote'];
                 if($vote == "si")
-                    $vote1 =+ 1;
+                    $vote1 = $vote1 + 1;
                 if($vote == "no")
-                    $vote =+ 1;
+                    $vote2 = $vote2 + 1;
 
                 $instruction = "update votos set votos1 = $vote1, votos2 = $vote2";
                 $update = mysqli_query($connection, $instruction)
-                or die ("Query failure");
+                or die ("Modification failure");
 
                 mysqli_close ($connection);
 
@@ -41,8 +41,8 @@
 
             <p>Do you think that the price of the market will continue raising?</p>
             <form action = ej2.php method = post>
-                <input type = radio name = voto value = si checked>Si<br>
-                <input type = radio name = voto value = no checked>No<br>
+                <input type = radio name = vote value = si checked>Si<br>
+                <input type = radio name = vote value = no>No<br>
                 <input type = submit name = send value = vote>
             </form>
 
