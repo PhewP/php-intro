@@ -26,6 +26,16 @@ form p {
     padding: 0.1em;
 }
 
+form p label {
+    float:left;
+    width: 25%;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+}
+
 /* tables */
 
 th {
