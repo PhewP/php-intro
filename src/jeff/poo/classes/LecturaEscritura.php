@@ -14,5 +14,11 @@
         public function put($valor) {
             $this->x = $valor;
         }
+
+        public function accion() {
+            if($this->x < 0) {
+                throw new Exception('Accion prohibida', 123);
+            }
+        }
     }
 ?>
