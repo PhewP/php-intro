@@ -14,6 +14,22 @@
             
         }
 
+        public function setNombre($nombre) {
+            $this->nombre = $nombre;
+        }
+
+        public function setApellido($apellido) {
+            $this->apellido = $apellido;
+        }
+
+        public function getNombre() {
+            return $this->nombre;
+        }
+
+        public function getApelido() {
+            return $this->apellido;
+        }
+
         public function __destruct()
         {
             echo "<p><b> Eliminación de $this ->apellido</b></p>";
