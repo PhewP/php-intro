@@ -7,7 +7,7 @@
         private $apellidos;
 
         public function __construct($patronimico) {
-            [$this->apellidos, $this->nombre] = explode(' ', $patronimico);
+            [$this->apellidos, $this->nombre] = explode(" ", $patronimico);
         }
 
         public function __toString()
@@ -20,6 +20,9 @@
                 return "$this->nombre ($this->apellidos)";
             }
             else if($format == Autor::APELLIDOS_DESPUES_COMILLAS) {
+                return "$this->apellidos $this->nombre";
+            }
+            else if($format == NULL) {
                 return "$this->apellidos $this->nombre";
             }
             
