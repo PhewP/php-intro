@@ -5,6 +5,8 @@
 <?php
     class Usuario {
 
+        use YoSoyLIsto, YoSeCalcular;
+
         private $apellido;
         private $nombre;
         private $idioma = 'es_ES';
@@ -15,6 +17,8 @@
             $this->nombre = $nombre;
             $this->apellido = $apellido;
             $this->timestamp = time();
+
+            $this->decirHola();
         }
 
         public function setNombre($nombre) {
@@ -62,13 +66,10 @@
     class Usuario_color extends Usuario {
         public $colores;
 
-        use YoSoyLIsto, YoSeCalcular;
-
         public function __construct($nombre, $colores) {
             // llamda al constructor de la clase madre 
             parent::__construct($nombre, 'X');
             $this->colores = explode(",", $colores);
-            $this->decirHola();
         }
 
         public function colores() {
