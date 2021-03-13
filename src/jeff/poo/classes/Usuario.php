@@ -53,4 +53,19 @@
             return "$this->nombre $this->apellido - $creacion";
         }
     }
+
+    // Clase que hereda de Usuario
+    class Usuario_color extends Usuario {
+        public $colores;
+
+        public function __construct($nombre, $colores) {
+            // llamda al constructor de la clase madre 
+            parent::__construct($nombre, 'X');
+            $this->colores = explode(",", $colores);
+        }
+
+        public function colores() {
+            return implode(',', $this->colores);
+        }
+    }
 ?>
