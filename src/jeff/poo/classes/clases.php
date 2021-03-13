@@ -16,3 +16,10 @@
 
     echo "$yo <br />";
 ?>
+
+<!-- llamadada a metodo en la instanciacion -->
+<!-- Con este tipo de llamada el nuevo objeto se suprme inmediatamente después de su creacion -->
+<?php
+    $informacion = (new Usuario('Victor', 'Hugo'))->informacion();
+    echo "$informacion<br/>"
+?>
