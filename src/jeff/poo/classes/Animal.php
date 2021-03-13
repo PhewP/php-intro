@@ -16,6 +16,7 @@
         // Is like $this -> variable => self::$variable
 
         private static $counter = 0;
+        protected $edad = 0;
 
         public static function getCounter() {
             return self::$counter;

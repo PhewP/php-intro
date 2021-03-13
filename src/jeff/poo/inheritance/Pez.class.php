@@ -1,7 +1,3 @@
-<?php 
-    include('../classes/Animal.php')
-?>
-
 <?php
     class Pez extends Animal {
         private $vive_en_el_mar;
@@ -24,5 +20,13 @@
         public function nadar() {
             echo "Nado <br />";
         }
+
+        public function mostrarATributos() {
+            echo "Type:".$this->vive_en_el_mar; // propio privado
+            echo "Edad:".$this->edad; // protected de la clase madre
+            echo "Peso:".$this->peso; // error, privado de la clase madre
+        }
+
+        
     }
 ?>
