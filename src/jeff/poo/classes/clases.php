@@ -4,6 +4,7 @@
     include('Usuario.php');
     include('claseMadre.php');
     include('Euclide.php');
+    include('LecturaEscritura.php');
 ?>
 
 <?php
@@ -109,4 +110,105 @@ principal -->
     );
 
     echo $euclide ->mostrarSuperficie();
+?>
+
+<!-- Excepciones -->
+<!-- Administrar los errores  -->
+<!-- meter codigo entre bloques try/catch  -->
+<!-- Bloque finally es opcional, siempre se ejecutará después de los bloques try o catch, se produzca una excepción o no  -->
+<!-- la clase Exception tiene dos argumentos, mensaje y codigo -->
+<?php
+    $objeto = new unaClase();
+    $objeto->put(1);
+    echo'<br/>--<br/>';
+    try {
+        echo 'Objeto 1:';
+        $objeto->accion();
+        echo"OK<br/>";
+    }catch(Exception $e) {
+        echo 'Error'.$e->getCode().'-'.$e->getMessage().'<br/>';
+    }
+
+    $objeto = new unaClase();
+    $objeto->put(-1);
+    try {
+        echo 'Objeto 2:';
+        $objeto->accion();
+        echo 'OK<br />';
+    } catch(Exception $e) {
+        echo 'ERROR'.$e->getCode().'-'.$e->getMessage().'<br/>';
+    }
+    echo'--<br/>';
+?>
+
+<!-- lo mismo pero con finally -->
+
+<?php 
+    $object = new unaClase();
+    $object->put(1);
+    try {
+        echo "Objecto 1:";
+        $object->accion();
+        echo 'OK<br/>';
+    }catch (Exception $e) {
+        echo 'Error'.$e->getCode().'-'.$e->getMessage().'<br/>';
+    }finally{
+        echo 'Finally<br/>';
+    }
+
+    $object->put(-1);
+    try {
+        echo 'Objecto 2';
+        $object->accion();
+        echo 'OK<br/>';
+    } catch (Exception $e) {
+        echo 'Error'.$e->getCode().'-'.$e->getMessage().'<br/>';
+    }finally {
+        echo 'FINALLY<br/>';
+    }
+?>
+<!-- 
+Si una excepcion se no se procesa se producira un error fatal. Se puede definir un gesttor de excepcion 
+por defeto utilizando set_exception_handler. -->
+
+<!-- Puedes creatr tus propias escepciones ampliando la clase exception interna  -->
+<!-- Se puede utilizar varios bloques catch para procesar diferentes excepciones  -->
+
+<?php 
+    $object = new unaClase();
+    $object->put(1);
+    try {
+        echo "Objecto 1:";
+        $object->accion();
+        echo 'OK<br/>';
+    }catch (Exception $e) {
+        echo 'Error'.$e->getCode().'-'.$e->getMessage().'<br/>';
+    }finally{
+        echo 'Finally<br/>';
+    }
+
+    $object->put(-1);
+    try {
+        echo 'Objecto 2';
+        $object->superAccion();
+        echo 'OK<br/>';
+    }catch (MyException $mye) {
+        echo 'Error'.$mye->getSuperCode().'-'.$mye->getMessage().'<br/>';
+    }catch (Exception $e) {
+        echo 'Error'.$e->getCode().'-'.$e->getMessage().'<br/>';
+    }finally {
+        echo 'FINALLY<br/>';
+    }
+
+    // también se puede agrupar en una sola linea
+    $object->put(-1);
+    try {
+        echo 'Objecto 3';
+        $object->superAccion();
+        echo 'OK<br/>';
+    }catch (MyException | Exception $e) {
+        echo 'Error'.$e->getCode().'-'.$e->getMessage().'<br/>';
+    }finally {
+        echo 'FINALLY<br/>';
+    }
 ?>

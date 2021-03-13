@@ -1,4 +1,5 @@
 <?php
+    include('MyException.php');
     interface Lectura {
         function get();
     }
@@ -16,8 +17,16 @@
         }
 
         public function accion() {
+            echo "valor de x = ".$this->x."unidades";
             if($this->x < 0) {
                 throw new Exception('Accion prohibida', 123);
+            }
+        }
+        
+        public function superAccion() {
+            echo "valor de x = ".$this->x."unidades";
+            if($this->x < 0) {
+                throw new MyException('Accion prohibida', 123);
             }
         }
     }
