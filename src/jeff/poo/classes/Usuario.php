@@ -26,7 +26,7 @@
             return $this->nombre;
         }
 
-        public function getApelido() {
+        public function getApellido() {
             return $this->apellido;
         }
 
@@ -51,7 +51,7 @@
 
         public function informacion(){
             $creacion = $this->FormatoDeLaMarcaDeTiempo();
-            return "$this->nombre $this->apelido - $creacion";
+            return "$this->nombre $this->apellido - $creacion";
         }
     }
 ?>
