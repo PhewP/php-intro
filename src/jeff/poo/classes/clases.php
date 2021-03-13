@@ -212,3 +212,8 @@ por defeto utilizando set_exception_handler. -->
         echo 'FINALLY<br/>';
     }
 ?>
+
+<!-- Ejercicio Escribrir una clase  -->
+<?php
+    
+?>
