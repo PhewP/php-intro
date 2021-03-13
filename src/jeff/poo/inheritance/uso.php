@@ -33,3 +33,27 @@
     $pez->setType(true);
     $pez->mostrarATributos();
 ?>
+
+<!-- sobrecarga -->
+<!-- Sirve par amodificar un método que ya existe en una clase madre con el objetivo de cambiar su comportamiento -->
+<!-- El metodo existe en las dos clases diferentes y segun contexto ejecuta el de la clase hija o clase madre -->
+
+<?php
+    $pez = new Pez("gris", 8);
+    $pez->setType(true);
+
+    $otro_pez = new Pez("negro", 5);
+    $otro_pez->setType(false);
+
+    $pez->eat($otro_pez);
+    echo "El tipo de pez comido es:".$otro_pez->getType()."<br />";
+    echo "El peso del pez comido es:".$otro_pez->getWeight()." kg<br />";
+?>
+
+<!-- Herencia en cascada -->
+
+<!-- La herencia múltiple no existe en php se tiene que realizar en cascada -->
+<!-- animal->pez->pez_espada -->
+<!-- pez eespada accede a sus métodos privados, protegidos y publicos -->
+<!-- a todos los atributos protegidos y publicos de pez -->
+<!-- a todos los atributos y metodos protegidos y publicos de la clase animal -->

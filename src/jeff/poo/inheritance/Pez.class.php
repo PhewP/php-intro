@@ -27,6 +27,18 @@
             echo "Peso:".$this->peso; // error, privado de la clase madre
         }
 
+        public function eat(Animal $animal_comido) {
+
+            parent::eat($animal_comido);
+
+            if (isset($animal_comido->raza)) {
+                $animal_comido->raza="";
+            }
+            if (isset($animal_comido->vive_en_el_mar)) {
+                $animal_comido -> vive_en_el_mar="";
+            }
+        }
+
         
     }
 ?>
