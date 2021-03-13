@@ -1,4 +1,8 @@
 <?php
+    include("YoSeCalcular.php");
+?>
+
+<?php
     class Usuario {
 
         private $apellido;
@@ -58,10 +62,13 @@
     class Usuario_color extends Usuario {
         public $colores;
 
+        use YoSoyLIsto, YoSeCalcular;
+
         public function __construct($nombre, $colores) {
             // llamda al constructor de la clase madre 
             parent::__construct($nombre, 'X');
             $this->colores = explode(",", $colores);
+            $this->decirHola();
         }
 
         public function colores() {
