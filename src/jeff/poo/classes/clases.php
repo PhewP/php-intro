@@ -3,6 +3,7 @@
 <?php
     include('Usuario.php');
     include('claseMadre.php');
+    include('Euclide.php');
 ?>
 
 <?php
@@ -74,8 +75,38 @@ principal -->
 <!-- tipo de clase qeu reagrupa un conjunto de métodso o de atributos que pueden utilizarse en otras clases sin usar herencia  -->
 <!-- Es un método fácil de reutilización refactorización de código ya que en PHP no tiene herencia múltiple -->
 
+<!-- Un metodo heredado se reemplaza por un metodo con el mismo nombre surgido en un trait  -->
+<!-- Un trait se reemplaza por un metodo del mismo nombre de la clase actual -->
+<!-- Si dos traits insertan un metodo con el mismo nombre en una clase se produce un error a menos que se use insteadof o as -->
+<!-- Un trait puede usar otros traits -->
+<!-- caracteristicas -->
+<!-- cambiar la visibilidad de los metodos de la clase que utiliza el trait  -->
+<!-- definir atributos en un trait -->
+<!-- definir los metodos abstractos en un trait ( estos metodos se tienen que implementar en la clase que use un trait ) -->
+<!-- definir atributos o metodos estaticos en un trait (mismo funcionamiento que los atributos y los metodos estaticos definidos en una clase ) -->
+
+
 <?php
     $yo= new Usuario('Oliver', 'Hell');
     echo 'Yo se calcular';
     echo '10823 x 11409 = '.$yo->producto(10821, 11409);
+?>
+
+
+<!-- clases anonimas -->
+<?php
+    $euclide = new Euclide();
+    $euclide->atribuirFigura(
+        new class(2, 5) {
+            public function __construct($ancho, $longitud) {
+                $this->ancho = $ancho;
+                $this->longitud = $longitud;
+            }
+            public function superficie() {
+                return $this->ancho *$this->longitud;
+            }
+        }
+    );
+
+    echo $euclide ->mostrarSuperficie();
 ?>
