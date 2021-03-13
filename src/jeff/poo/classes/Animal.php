@@ -86,5 +86,11 @@
         public function __destruct() {
             echo 'destructor called <br />';
         }
+
+        // to String function allow print a class instance.
+        public function __toString()
+        {
+            return "Im $this->weight kg and my color is $this -> color";
+        }
     }
 ?>
