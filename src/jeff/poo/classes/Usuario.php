@@ -10,8 +10,6 @@
         {
             $this -> nombre = $nombre;
             $this -> apellido = $apellido;
-            $this -> timestamp = time();
-            
         }
 
         public function setNombre($nombre) {
@@ -32,12 +30,12 @@
 
         public function __destruct()
         {
-            echo "<p><b> Eliminación de $this ->apellido</b></p>";
+            echo "<p><b> Eliminación de $this->apellido</b></p>";
         }
 
         public function __toString()
         {
-            return "__toString = $this -> apellido - $this -> nombre";
+            return "__toString = $this->apellido - $this->nombre";
         }
 
         public function setIdioma($idioma){
