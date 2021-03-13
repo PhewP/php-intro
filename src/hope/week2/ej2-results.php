@@ -31,7 +31,7 @@
 
             $percent = round(($votes1 / $votes) * 100, 2);
             print("<tr>");
-            print("<td class = 'left' >Si</td>");
+            print("<td class = 'left'>Si</td>");
             print("<td class = 'right'>$votes1</td>");
             print("<td class = 'right'>$percent%</td>");
             print("<td class = 'left'><img src='photos/puntoamarillo.gif' height='10' width='" . $percent * 4 . "'></td>");
@@ -39,7 +39,7 @@
 
             $percent = round(($votes2 / $votes) * 100, 2);
             print("<tr>");
-            print("<td class = 'left' >No</td>");
+            print("<td class = 'left'>No</td>");
             print("<td class = 'right'>$votes2</td>");
             print("<td class = 'right'>$percent%</td>");
             print("<td class = 'left'><img src='photos/puntoamarillo.gif' height='10' width='" . $percent * 4 . "'></td>");
