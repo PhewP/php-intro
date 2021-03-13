@@ -3,13 +3,14 @@
 
         private $apellido;
         private $nombre;
-        private $idioma;
+        private $idioma = 'es_ES';
         private $timestamp; // fecha de creación
 
         public function __construct($nombre, $apellido)
         {
-            $this -> nombre = $nombre;
-            $this -> apellido = $apellido;
+            $this->nombre = $nombre;
+            $this->apellido = $apellido;
+            $this->timestamp = time();
         }
 
         public function setNombre($nombre) {
