@@ -67,3 +67,61 @@ y desplazarse al siguiente registro. -->
         die("Error :".$e->getMessage());
     }
 ?>
+
+<!-- Escribir datos  -->
+<!-- Para ejectura una consulta de tipo Insert -->
+<!-- El metodo que permite ejecutar una consulta SQL de tipo UPDATE, INSERT, o DELETE es: exec() -->
+
+<!-- Ejemplo de insert  -->
+<!-- observe que el id_persona no se ha agregado la consulta, debido que es autoincremental, la base de datos se asignara
+automaticamente -->
+<?php
+    try {
+        $base = new PDO('mysql:host=127.0.0.1;dbname=prueba_pdo', 'root', 'a6zYXjc6YhWm94xR');
+        $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "INSERT INTO persona(nombre, apellidos, edad) VALUES ('oliver', 'durán', 36)";
+        // agregar datos en la tabla persona
+        $base->exec($sql);
+        echo "Persona agregada";
+    }catch(Exception $e) {
+        // mensaje en caso de error
+        die('Error : '.$e->getMessage());
+    }
+?>
+
+<?php
+    try {
+        $base = new PDO('mysql:host=127.0.0.1;dbname=prueba_pdo', 'root', 'a6zYXjc6YhWm94xR');
+        $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "INSERT INTO persona(nombre, apellidos, edad) values ('gerardo', 'roldan', 64)";
+
+        $base->exec($sql);
+        echo "El identificador de la última persona agregada es: ";
+        echo $base->lastInsertId().".";
+    }catch(Exception $e) {
+        // mensaje en caso de error
+        die ('Error : '.$e->getMessage());
+    }
+?>
+
+<!-- Eliminar datos  -->
+<!-- el metodo que permite ejecutar una consulta sql de tipo update, insert, delete es exec() -->
+<?php
+    try {
+        $base = new PDO('mysql:host=127.0.0.1;dbname=prueba_pdo', 'root', 'a6zYXjc6YhWm94xR');
+        $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "DELETE FROM persona WHERE apellidos = 'lopez'";
+        // eliminacion de datos  enla tabla persona
+        $base->exec($sql);
+        echo "persona eliminada lopez.";
+        $base->exec("DELETE FROM persona WHERE apellidos = 'roldan'");
+        echo "persona eliminada roldan.";
+        $base->exec("DELETE FROM persona WHERE apellidos = 'durán'");
+        echo "persona eliminada durán.";
+    }catch(Exception $e) {
+        die('Error : '.$e->getMessage());
+    }
+?>
