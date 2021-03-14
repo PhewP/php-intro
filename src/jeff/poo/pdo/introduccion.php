@@ -67,3 +67,235 @@ y desplazarse al siguiente registro. -->
         die("Error :".$e->getMessage());
     }
 ?>
+
+<!-- Escribir datos  -->
+<!-- Para ejectura una consulta de tipo Insert -->
+<!-- El metodo que permite ejecutar una consulta SQL de tipo UPDATE, INSERT, o DELETE es: exec() -->
+
+<!-- Ejemplo de insert  -->
+<!-- observe que el id_persona no se ha agregado la consulta, debido que es autoincremental, la base de datos se asignara
+automaticamente -->
+<?php
+    try {
+        $base = new PDO('mysql:host=127.0.0.1;dbname=prueba_pdo', 'root', 'a6zYXjc6YhWm94xR');
+        $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "INSERT INTO persona(nombre, apellidos, edad) VALUES ('oliver', 'durán', 36)";
+        // agregar datos en la tabla persona
+        $base->exec($sql);
+        echo "Persona agregada";
+    }catch(Exception $e) {
+        // mensaje en caso de error
+        die('Error : '.$e->getMessage());
+    }
+?>
+
+<?php
+    try {
+        $base = new PDO('mysql:host=127.0.0.1;dbname=prueba_pdo', 'root', 'a6zYXjc6YhWm94xR');
+        $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "INSERT INTO persona(nombre, apellidos, edad) values ('gerardo', 'roldan', 64)";
+
+        $base->exec($sql);
+        echo "El identificador de la última persona agregada es: ";
+        echo $base->lastInsertId().".";
+    }catch(Exception $e) {
+        // mensaje en caso de error
+        die ('Error : '.$e->getMessage());
+    }
+?>
+
+<!-- Eliminar datos  -->
+<!-- el metodo que permite ejecutar una consulta sql de tipo update, insert, delete es exec() -->
+<?php
+    try {
+        $base = new PDO('mysql:host=127.0.0.1;dbname=prueba_pdo', 'root', 'a6zYXjc6YhWm94xR');
+        $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "DELETE FROM persona WHERE apellidos = 'lopez'";
+        // eliminacion de datos  enla tabla persona
+        $base->exec($sql);
+        echo "persona eliminada lopez.";
+        $base->exec("DELETE FROM persona WHERE apellidos = 'roldan'");
+        echo "persona eliminada roldan.";
+        $base->exec("DELETE FROM persona WHERE apellidos = 'durán'");
+        echo "persona eliminada durán.";
+    }catch(Exception $e) {
+        die('Error : '.$e->getMessage());
+    }
+?>
+
+<!-- Actualizar datos -->
+<!-- para modificar datos, ejecute una consulta de tipo UPDATE -->
+<!-- Para ejecutar una consulta SQL de tipo UPDATE, INSERT o DELETE es : exec() -->
+<?php
+    try {
+        $base = new PDO('mysql:host=127.0.0.1;dbname=prueba_pdo', 'root', 'a6zYXjc6YhWm94xR');
+        $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "UPDATE persona SET apellidos = 'lucas', edad=33 WHERE apellidos='Germán'";
+        $numero = $base->exec($sql);
+        echo "Numero de personas modificadas: ".$numero;
+    }catch(Exception $e) {
+        die('Error: '.$e->getMessage());
+    }
+?>
+
+<!-- Consultas preparadas  -->
+<!-- Consultas parametrizadas -->
+<!-- Las consultas SELECT, UPDATE, DELETE, INSERT  se hacen con: prepare() -->
+<!-- Luego para ejecutarla se utiliza execute -->
+<?php
+    try{
+        
+        $base = new PDO('mysql:host=127.0.0.1;dbname=prueba_pdo', 'root', 'a6zYXjc6YhWm94xR');
+        $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+        $sql = 'SELECT nombre, apellidos from persona WHERE edad > ? AND apellidos LIKE ?';
+    
+        $resultado = $base->prepare($sql);
+        $resultado->execute(array(5, 'Mo%'));
+        while($registro = $resultado->fetch()) {
+            echo 'apellidos:'.$registro['apellidos'].', Nombre:'.$registro['nombre'].'<br />';
+        }
+    
+        $resultado->closeCursor();
+    }catch(Exception $e) {
+        die('Error : '.$e->getMessage());
+    }
+?>
+
+<!-- Using markers -->
+<?php
+    try {
+        $base = new PDO('mysql:host=127.0.0.1;dbname=prueba_pdo', 'root', 'a6zYXjc6YhWm94xR');
+        $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "SELECT nombre, apellidos FROM persona WHERE edad > :edad AND apellidos LIKE :apellidos";
+
+        $result = $base->prepare($sql);
+        $result->execute(array('edad' => 5, 'apellidos' => 'Mo%'));
+
+        while ($registro = $resultado->fetch()) {
+            echo 'Apellidos: '.$registro['apellidos'].', Nombre:'.$registro['nombre'].'<br/>';
+        }
+        $resultado->closeCursor();
+    }catch(Exception $e) {
+        die('Error : '.$e->getMessage());
+    }
+?>
+
+<!-- Escribir datos -->
+<!-- Igual que leer datos, utilizamos los métodos prepare() y execute() -->
+<?php 
+    try {
+        $base = new PDO('mysql:host=127.0.0.1;dbname=prueba_pdo', 'root', 'a6zYXjc6YhWm94xR');
+        $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "INSERT INTO persona (nombre, apellidos, edad) VALUES (:apellido, :nombre, :edad)";
+        // preparar los datos
+        $resultado = $base->prepare($sql);
+        $resultado->execute(array('apellido' => "Rincon Lopez", 'nombre' => 'Clara', 'edad' => 42));
+
+        echo "El identificador de la última persona agregada es : ";
+        echo $base->lastInsertId().".";
+        $resultado->closeCursor();
+    }catch(Exception $e) {
+        die('Error : '.$e->getMessage());
+    }
+
+?>
+
+<!-- Ejecutar una insercion varias veces seguidas, utilizar el enlace de argumentos con el metodo binParam() -->
+<?php
+    try {
+        $base = new PDO('mysql:host=127.0.0.1; dbname=prueba_pdo', 'root','a6zYXjc6YhWm94xR');
+        $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "INSERT INTO persona (nombre, apellidos, edad) VALUES (:nombre, :apellido, :edad)";
+
+        $resultado = $base->prepare($sql);
+
+        $resultado->bindParam(':apellido', $apellidos);
+        $resultado->bindParam(':nombre', $nombre);
+        $resultado->bindParam(':edad', $edad);
+
+        $apellidos = 'Lopez Ruiz';
+        $nombre = 'Juan';
+        $edad = 57;
+        $resultado->execute();
+
+        echo "El identificador de la última person agregada es:";
+        echo $base->lastInsertId().".<br />";
+
+        $nombre = "Bob";
+        $apellidos = "Martinez";
+        $edad = 45;
+        $resultado->execute();
+        
+        echo "El identificador de la última persona agregada es:";
+        echo $base->lastInsertId().".";
+        $resultado->closeCursor();
+    }catch(Exception $e) {
+        die('Error : '.$e->getMessage());
+    }
+?>
+
+<!-- eliminar datos -->
+<?php
+    try {
+        $base = new PDO('mysql:host=127.0.0.1;dbname=prueba_pdo', 'root', 'a6zYXjc6YhWm94xR');
+        $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "DELETE FROM persona WHERE apellidos =:apellido";
+        $resultado = $base->prepare($sql);
+        $resultado->execute(array('apellido' => 'Martinez'));
+        echo "Persona eliminada.";
+        $resultado->closeCursor();
+    }catch(Exception $e) {
+        die('Error : '.$e->getMessage());
+    }
+?>
+
+<!-- modificar datos -->
+<!-- igual que para escribir y leer datos va utilizar los metodos prepare() y execute() -->
+<?php 
+
+    try {
+
+        $base = new PDO('mysql:host=127.0.0.1;dbname=prueba_pdo', 'root', 'a6zYXjc6YhWm94xR');
+        $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+        $sql = "UPDATE persona SET edad = :edad WHERE apellidos = :apellidos and nombre = :nombre";
+    
+        $resultado = $base->prepare($sql);
+        $resultado->execute(array('edad' => 36, 'apellidos' => 'Morales HonHon', 'nombre' => 'Nanie'));
+        
+        echo "Persona modificada.";
+        $resultado->closeCursor();
+    }catch(Exception $e) {
+        die('Error : '.$e->getMessage());
+    }
+?>
+
+<!-- Llamar un procedimiento almacenado -->
+<!-- un procedimiento almacenado tiene un nombre y puede tener agumentos de entrada y de salida -->
+
+<?php
+    try {
+        $base = new PDO('mysql:host=127.0.0.1;dbname=prueba_pdo', 'root', 'a6zYXjc6YhWm94xR');
+        $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $base->prepare("CALL creacion_persona(?, ?, ?)");
+        $apellidos = 'MORALES';
+        $nombre = 'David';
+        $edad = 40;
+        $stmt->bindParam(1, $nombre, PDO::PARAM_STR, 20);
+        $stmt->bindParam(2, $apellidos, PDO::PARAM_STR, 20 );
+        $stmt->bindparam(3, $edad, PDO::PARAM_INT);
+
+        $stmt->execute();
+        echo "El procedimiento ha insertado una nueva persona.";
+    } catch(Exception $e) {
+        die('Error : '.$e->getMessage());
+    }
+?>
